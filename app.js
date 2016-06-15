@@ -2,8 +2,10 @@ var express = require('express');
 var swig = require('swig');
 var app = express();
 var routes = require('./routes/');
-
-app.use('/', routes);
+var socketio = require('socket.io');
+var server = app.listen(3000);
+var io = socketio.listen(server);
+app.use('/', routes(io));
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -28,7 +30,8 @@ swig.setDefaults({ cache: false });
 // });
 
 
-app.listen(3000);
+
+
 console.log("server listening....");
 
 // var locals = {

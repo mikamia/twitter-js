@@ -26,9 +26,11 @@
   {% endif %}
 <p>
       <!-- display tweets here -->
+      <div id="tweetSpace">
       {% for tweet in tweets %}
         <li><b><a href="/users/{{tweet.name}}">{{tweet.name}}</a></b><br><a href="/tweets/{{tweet.id}}">{{tweet.text}}</a><br></li>
       {% endfor %}
+      </div>
 
     </div>
   </div>
